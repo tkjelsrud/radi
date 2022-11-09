@@ -2,10 +2,10 @@
 <head>
   <style>
     .ok {
-      background-color: "green"
+      background-color: green;
     }
     .fail {
-      background-color: "red"
+      background-color: red;
     }
   </style>
   <script type="text/javascript">
@@ -24,10 +24,27 @@
       console.log(response.body);
        document.getElementById("test-connection").classList.add("ok");
     });
+    
+    const reqPost = new Request('https://api.jsonbin.io/v3/b/636b5cc80e6a79321e4449a4/latest', {
+      method: 'POST',
+       headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Key': '$2b$10$7JrtwZS4.ENCVXramO.ANO7AtKjtvmmazkfq9QtZ43ABECNSD3/7'
+      },
+      body: JSON.stringify(obj)
+     });
+    
+    reqPost.json().then((data) => {
+  // do something with the data sent in the request
+      document.getElementById("test-post").classList.add("ok");
+      
+});
+    
   </script>
 </head>
 
 <body>
-  <div id="test-connection">Test: Connection</div>
+  <div id="test-connection">Test: Connection towards jsonbin</div>
+  <div id="test-post">Test: Posting data</div>
 </body>
 </html>
