@@ -8,6 +8,13 @@
       background-color: red;
     }
   </style>
+</head>
+
+<body>
+  <div id="label"><h3>Testset - jsonbin</h3></div>
+  <div id="test-connection">Test: Connection towards jsonbin</div>
+  <div id="test-post">Test: Posting data</div>
+  
   <script type="text/javascript">
     const obj = {hello: 'world'};
 
@@ -21,8 +28,10 @@
 
      fetch(request).then((response) => {
       console.log(response);
-      console.log(response);
-      document.getElementById("test-connection").classList.add("ok");
+      if(response.status == 200)
+        document.getElementById("test-connection").classList.add("ok");
+      else
+        document.getElementById("test-connection").classList.add("fail");
     });
     
     const reqPost = new Request('https://api.jsonbin.io/v3/b/636b5cc80e6a79321e4449a4/latest', {
@@ -30,22 +39,18 @@
        headers: {
         'Content-Type': 'application/json',
         'X-Access-Key': '$2b$10$7JrtwZS4.ENCVXramO.ANO7AtKjtvmmazkfq9QtZ43ABECNSD3/7'
-      },
-      body: JSON.stringify(obj)
-     });
-    
-    reqPost.json().then((data) => {
-  // do something with the data sent in the request
-      document.getElementById("test-post").classList.add("ok");
-      
-});
-    
-  </script>
-</head>
+       },
+       body: JSON.stringify(obj)
+      });
 
-<body>
-  <div id="label"><h3>Testset - jsonbin</h3></div>
-  <div id="test-connection">Test: Connection towards jsonbin</div>
-  <div id="test-post">Test: Posting data</div>
+     fetch(reqPost).then((response) => {
+      console.log(reqPost);
+      if(reqPost.status == 200)
+        document.getElementById("test-post").classList.add("ok");
+      else
+        document.getElementById("test-post").classList.add("fail");
+    });
+
+  </script>
 </body>
 </html>
