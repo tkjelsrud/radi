@@ -21,8 +21,8 @@
 
      fetch(request).then((response) => {
       console.log(response);
-      console.log(response.body);
-       document.getElementById("test-connection").classList.add("ok");
+      console.log(response);
+      document.getElementById("test-connection").classList.add("ok");
     });
     
     const reqPost = new Request('https://api.jsonbin.io/v3/b/636b5cc80e6a79321e4449a4/latest', {
@@ -44,6 +44,7 @@
 </head>
 
 <body>
+  <div id="label"><h3>Testset - jsonbin</h3></div>
   <div id="test-connection">Test: Connection towards jsonbin</div>
   <div id="test-post">Test: Posting data</div>
 </body>
