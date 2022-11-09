@@ -16,7 +16,6 @@
   <div id="test-post">Test: Posting data</div>
   
   <script type="text/javascript">
-    const obj = {hello: 'world'};
 
     const request = new Request('https://api.jsonbin.io/v3/b/636b5cc80e6a79321e4449a4/latest', {
       method: 'GET',
@@ -35,13 +34,13 @@
     });
     
     const reqPost = new Request('https://api.jsonbin.io/v3/b/636b5cc80e6a79321e4449a4/latest', {
-      method: 'POST',
+      method: 'PUT',
        headers: {
         'Content-Type': 'application/json',
         'X-Master-Key': '$2b$10$PiP9T5fJTCjMJCMoI9alZOdI2aRZtrG67mc0qrw384sGTLiuxYxja'
         //'X-Access-Key': '$2b$10$7JrtwZS4.ENCVXramO.ANO7AtKjtvmmazkfq9QtZ43ABECNSD3/7'
        },
-       body: JSON.stringify(obj)
+       body: JSON.stringify({hello: 'world'})
       });
 
      fetch(reqPost).then((response) => {
