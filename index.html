@@ -44,7 +44,7 @@
       });
 
      fetch(reqPost).then((response) => {
-      console.log(reqPost);
+      console.log(response);
       if(reqPost.status == 200)
         document.getElementById("test-post").classList.add("ok");
       else
