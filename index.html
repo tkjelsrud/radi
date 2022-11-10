@@ -51,10 +51,10 @@
         document.getElementById("test-post").classList.add("fail");
     });*/
     
-    fetch('https://api.jsonbin.io/v3/b/636b5cc80e6a79321e4449a4/latest',{
-      method: 'PUT',
+    fetch('https://api.jsonbin.io/v3/b',{
+      method: 'POST',
       headers: {
-        'Content-Type':'application/json',
+        'Content-Type': 'application/json',
         'X-Master-Key': '$2b$10$PiP9T5fJTCjMJCMoI9alZOdI2aRZtrG67mc0qrw384sGTLiuxYxja'
       },
       body: JSON.stringify({'record': 'hello world'})
