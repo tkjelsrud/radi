@@ -50,8 +50,9 @@
       console.log(response);
       //return response.json();
       if(response.status == 200) {
-        urlToDelete = response.url;
         document.getElementById("test-post").classList.add("ok");
+        runDeleteTest(response.url);
+        
       }
       else
         document.getElementById("test-post").classList.add("fail")
@@ -82,7 +83,7 @@
       console.log(data);
     });
     
-    if(urlToDelete) {
+    function runDeleteTest(urlToDelete) {
       fetch(urlToDelete,{
         method: 'DELETE',
         headers: {
