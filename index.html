@@ -148,6 +148,34 @@
     function sendInput(text) {
       jsbin.appendData(text);
     }
+
+    var timer = setInterval(checkUpdate, 3000);
+
+    function checkUpdate() {
+      jsbin.fetch();
+
+      document.getElementById("dataView").innerText = "";
+
+      recursiveData(jsbin.json);
+
+      //timer = setInterval(checkUpdate, 2000);
+    }
+
+    function recursiveData(data) {
+      for(let key in data) {
+        if(key == 'record') {
+          recursiveData(data['record'])
+        }
+        else if(key == 'metadata') {
+
+        }
+        else {
+          //console.log(data[key]);
+          document.getElementById("dataView").innerText += JSON.stringify(data[key]);
+        }
+      }
+    }
+
   </script>
 
   <script type="text/javascript">
